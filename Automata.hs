@@ -7,13 +7,13 @@ type Pos = (Int,Int)
 type Grid = Set(Pos)
 
 neighbors :: Grid -> Pos -> Int
-neighbors a (b,c) = Fold.foldl (\z d -> (if (elem d a) then (z+1) else z)) 0 (adjacent (b, c))
+neighbors a (b,c) = Fold.foldl (\z d -> (if (member d a) then (z+1) else z)) 0 (adjacent (b, c))
 
 adjacent (b,c) = [(x,y) | x <- [b-1..b+1], y <-[c-1..c+1]]
 
 alive :: Grid -> Pos -> Bool
 alive a b 
- | elem b a = aliveN < 5 && aliveN > 2
+ | member b a = aliveN < 5 && aliveN > 2
  | otherwise = aliveN == 3
  where
   aliveN = neighbors a b 

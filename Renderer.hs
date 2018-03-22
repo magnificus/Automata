@@ -4,7 +4,7 @@ import Data.Set
 import Control.Concurrent
 import Data.IORef
 
-dist = 0.0045
+dist = 0.004
 scaleS = 0.01
 both f (x,y) = (f x, f y)
 scalePoint = both (*scaleS)
@@ -31,7 +31,7 @@ display m = do
   renderPrimitive Quads  $
      mapM_ (\(x, y, z) -> vertex $ Vertex3 x y z) $ lifeToPoints generation
   modifyIORef m (+1)    -- increase it by 1
-  --threadDelay 100000
+  threadDelay 30000
   flush
 
 reshape :: ReshapeCallback
