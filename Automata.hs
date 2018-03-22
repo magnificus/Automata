@@ -22,5 +22,5 @@ nextG :: Grid -> Grid
 nextG a = Data.Set.filter (alive a) interesting
  where
   interesting = fromList $ concat $ Data.Set.map adjacent a
-
-getGeneration = (!!) (iterate nextG (fromList [(1,2),(2,2),(4,3),(4,4), (5,3), (5,4), (2,3), (4,1), (8,9), (10,9), (7,8)]))
+pentomo = [(2,1),(3,1),(2,2),(2,3), (1,2)]
+getGeneration = (!!) (iterate nextG (fromList pentomo))

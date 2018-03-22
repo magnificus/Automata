@@ -29,7 +29,7 @@ display m = do
   generation <- readIORef m
   renderPrimitive Quads  $
      mapM_ (\(x, y, z) -> vertex $ Vertex3 x y z) $ lifeToPoints generation
-  threadDelay 500000
+  threadDelay 100000
   flush
 
 
