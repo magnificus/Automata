@@ -31,7 +31,6 @@ main =  do
 display m s = do 
   readIORef m >>= print -- print it
   clear [ColorBuffer]
-  --generation <- readIORef m
   l <- readIORef s
   renderPrimitive Quads  $
      mapM_ (\(x, y, z) -> vertex $ Vertex3 x y z) $ lifeToPoints l 
