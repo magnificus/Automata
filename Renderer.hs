@@ -19,7 +19,6 @@ main :: IO ()
 main =  do
   (_progName, _args) <- getArgsAndInitialize
   i <- newIORef 0       -- new IORef i
-  test <- newIORef [(1,2)]
   _window <- createWindow "LIFE"
   seq <- randomPositions
   s <- newIORef $ fromList seq
@@ -35,7 +34,7 @@ display m s = do
   renderPrimitive Quads  $
      mapM_ (\(x, y, z) -> vertex $ Vertex3 x y z) $ lifeToPoints l 
   modifyIORef m (+1)    -- increase it by 1
-  modifyIORef s nextG
+  modifyIORef s (nextG conway)
   threadDelay 30000
   flush
 
