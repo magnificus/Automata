@@ -18,7 +18,7 @@ lifeToPoints seq = concat $ toList $Data.Set.map (getBox . scalePoint . (both fr
 main :: IO ()
 main =  do
   (_progName, _args) <- getArgsAndInitialize
-  i <- newIORef 0       -- new IORef i
+  i <- newIORef 0
   _window <- createWindow "LIFE"
   seq <- randomPositions
   s <- newIORef $ fromList seq
@@ -28,7 +28,7 @@ main =  do
   mainLoop
  
 display m s = do 
-  readIORef m >>= print -- print it
+  readIORef m >>= print 
   clear [ColorBuffer]
   l <- readIORef s
   renderPrimitive Quads  $
